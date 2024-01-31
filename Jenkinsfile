@@ -46,7 +46,7 @@ pipeline {
                             
         echo "containerising the docker image"
         sh "scp -o strictHostKeyChecking=no -r deploy-serverconfig ${DEPLOY_SERVER_IP}:/home/ec2-user"
-        sh "ssh -o strictHostKeyChecking=no ${DEPLOY_SERVER_IP} bash /home/ec2-user/build-serverconfig/docker-script.sh"
+        sh "ssh -o strictHostKeyChecking=no ${DEPLOY_SERVER_IP} bash /home/ec2-user/deploy-serverconfig/docker-script.sh"
         
         
         sh "ssh ${DEPLOY_SERVER_IP} sudo docker login -u $username -p $password"
