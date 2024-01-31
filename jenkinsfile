@@ -1,8 +1,8 @@
 pipeline {
     agent none
     environment {
-        IMAGE_NAME='gurudattaaws/box1:php-1.0'
-        BUILD_SERVER_IP='ec2-user@13.126.202.54'
+        IMAGE_NAME='gurudattaaws/box1:php-2.0'
+        BUILD_SERVER_IP='ec2-user@172.31.15.187'
         //DEPLOY_SERVER_IP=''
     }
 
