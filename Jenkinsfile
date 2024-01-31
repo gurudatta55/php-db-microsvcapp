@@ -10,7 +10,7 @@ pipeline {
         stage('build and push the image on build server'){
         steps{
             sshagent(['build-server-key']) {
-        script{
+        
         
         withCredentials([usernamePassword(credentialsId: 'docker_credentials', passwordVariable: 'password', usernameVariable: 'username')]) {
                             
@@ -26,7 +26,7 @@ pipeline {
                         
 
 
-}
+
 
                 }
             }
