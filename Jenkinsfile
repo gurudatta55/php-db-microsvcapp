@@ -9,8 +9,9 @@ pipeline {
     stages{
         stage('build and push the image on build server'){
         steps{
+            sshagent(['build-server-key']) {
         script{
-        sshagent(['build-server-key']) {
+        
         withCredentials([usernamePassword(credentialsId: 'docker_credentials', passwordVariable: 'password', usernameVariable: 'username')]) {
                             
         echo "building the docker image"
