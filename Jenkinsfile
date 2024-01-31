@@ -10,6 +10,7 @@ pipeline {
         stage('build and push the image on build server'){
             agent any
         steps{
+            script{
             sshagent(['build-server-key']) {
         
         
@@ -27,7 +28,7 @@ pipeline {
                         
 
 
-
+            }
 
                 }
             }
