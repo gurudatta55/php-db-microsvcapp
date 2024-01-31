@@ -18,7 +18,7 @@ pipeline {
                             
         echo "building the docker image"
         sh "scp -o strictHostKeyChecking=no -r build-serverconfig ${BUILD_SERVER_IP}:/home/ec2-user"
-        sh "ssh -o strictHostKeyChecking=no ${BUILD_SERVER_IP}:/home/ec2-user/build-serverconfig/dockerscript.sh"
+        sh "ssh -o strictHostKeyChecking=no ${BUILD_SERVER_IP}:/home/ec2-user/build-serverconfig/docker-script.sh"
         //sh "ssh sudo chmod +x ${BUILD_SERVER_IP} /home/ec2-user/build-serverconfig/dockerscript.sh"
         sh "ssh ${BUILD_SERVER_IP} sudo docker build -t ${IMAGE_NAME} -f /home/ec2-user/build-serverconfig"
         sh "ssh ${BUILD_SERVER_IP} sudo docker login -u $username -p $password"
@@ -46,7 +46,7 @@ pipeline {
                             
         echo "containerising the docker image"
         sh "scp -o strictHostKeyChecking=no -r deploy-serverconfig ${DEPLOY_SERVER_IP}:/home/ec2-user"
-        sh "ssh -o strictHostKeyChecking=no ${DEPLOY_SERVER_IP} bash /home/ec2-user/build-serverconfig/dockerscript.sh"
+        sh "ssh -o strictHostKeyChecking=no ${DEPLOY_SERVER_IP} bash /home/ec2-user/build-serverconfig/docker-script.sh"
         
         
         sh "ssh ${DEPLOY_SERVER_IP} sudo docker login -u $username -p $password"
